@@ -131,6 +131,7 @@ export default class UserStore {
         }
         return false;
     }
+
     changeUsername = async (values) => {
         try {
             const json = JSON.stringify({

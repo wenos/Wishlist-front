@@ -16,7 +16,7 @@ const WishlistCard = ({wishlist}) => {
                 pathname: `/wish-list/${wishlist?.id}`,
                 state: {title: "это я вставил в wislistCard"}
             }}>
-                <Card title={wishlist?.title + " " + wishlist?.description} bordered={true}
+                <Card title={wishlist?.title} bordered={true}
                       style={{width: '80vw', border: `1px solid ${color}`}}>
                 </Card>
             </Link>

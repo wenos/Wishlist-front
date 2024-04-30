@@ -25,7 +25,7 @@ export default class WishlistStore {
 
     getMyGifts = async(id) => {
         try {
-            const response = await $api.get(`/wishlist/my/${id}/gifts`);
+            const response = await $api.get(`/gift/wishlist/${id}`);
             return response.data;
         } catch (e) {
             this.rootStore.httpError(e);
@@ -69,5 +69,49 @@ export default class WishlistStore {
         } catch (e) {
             this.rootStore.httpError(e);
         }
+    }
+
+    createGift = async (values) => {
+        try {
+            const json = JSON.stringify({
+                link: values.link,
+                details: values.details,
+                title: values.title,
+                listId: values.listId
+            });
+            console.log(json)
+            await $api.post(`/gift`, json);
+            message.success('Success');
+        } catch (e) {
+            this.rootStore.httpError(e);
+        }
+        return "Not link";
+    }
+
+    updateGift = async (values) => {
+        try {
+            const json = JSON.stringify({
+                link: values.link,
+                details: values.details,
+                title: values.title
+            });
+            console.log(json)
+            await $api.put(`/gift/${values.id}`, json);
+            message.success('Success');
+            return true
+        } catch (e) {
+            this.rootStore.httpError(e);
+        }
+        return "Not link";
+    }
+
+    deleteGift = async (id) => {
+        try {
+            await $api.delete(`/gift/${id}`);
+            message.success('Success');
+        } catch (e) {
+            this.rootStore.httpError(e);
+        }
+        return "Not link";
     }
 }

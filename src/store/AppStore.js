@@ -4,12 +4,14 @@ import {message, notification} from "antd";
 import $api from "../http";
 import SystemStore from "./modules/SystemStore";
 import WishlistStore from "./modules/WishlistStore";
+import SharedStore from "./modules/SharedStore";
 
 export default class AppStore {
 
     users = new UserStore(this);
     system = new SystemStore(this);
     wishlists = new WishlistStore(this)
+    sharedStore = new SharedStore(this)
 
     userState = null;
     isAuthState = false;

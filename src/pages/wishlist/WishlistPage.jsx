@@ -42,16 +42,17 @@ const MainPage = () => {
 
     return (
         <PageTemplate title={"Wish-Lists"}>
-            <div className={'scroll-auto'}>
-                <Button onClick={handleCreateButtonClick}>Создать вишлист</Button>
+            <div className={'scroll-auto'} style={{textAlign: "center"}}>
+                <Button style={{fontFamily: "anta", fontSize: 18, width: "50%", margin: "0 auto", lineHeight: "10px"}} onClick={handleCreateButtonClick}>Create wishlist</Button>
                 <div className={'flex flex-col gap-2'}>
                     {wishlists?.map((wishlist) => (
                         <div key={wishlist.id}>
-                            <WishlistCard wishlist={wishlist} />
+                            <WishlistCard wishlist={wishlist}/>
                         </div>
                     ))}
                 </div>
             </div>
+
             <Modal
                 title="Создать вишлист"
                 visible={createModalVisible}
@@ -60,10 +61,10 @@ const MainPage = () => {
             >
                 <Form layout="vertical">
                     <Form.Item label="Название" name="title">
-                        <Input name="title" onChange={handleInputChange} />
+                        <Input name="title" onChange={handleInputChange}/>
                     </Form.Item>
                     <Form.Item label="Описание" name="description">
-                        <Input.TextArea name="description" onChange={handleInputChange} />
+                        <Input.TextArea name="description" onChange={handleInputChange}/>
                     </Form.Item>
                 </Form>
             </Modal>
