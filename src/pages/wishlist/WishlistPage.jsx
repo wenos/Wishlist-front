@@ -41,7 +41,7 @@ const MainPage = () => {
     };
 
     return (
-        <PageTemplate title={"Wish-Lists"}>
+        <PageTemplate title={"Wishlists"}>
             <div className={'scroll-auto'} style={{textAlign: "center"}}>
                 <Button style={{fontFamily: "anta", fontSize: 18, width: "50%", margin: "0 auto", lineHeight: "10px"}} onClick={handleCreateButtonClick}>Create wishlist</Button>
                 <div className={'flex flex-col gap-2'}>

@@ -1,10 +1,10 @@
-import { Card, Button, Modal, Input } from "antd";
-import { EditOutlined, DeleteOutlined, LinkOutlined } from '@ant-design/icons';
-import { useContext, useState } from "react";
-import { Context } from "../../index";
+import {Card, Button, Modal, Input} from "antd";
+import {EditOutlined, DeleteOutlined, LinkOutlined} from '@ant-design/icons';
+import {useContext, useState} from "react";
+import {Context} from "../../index";
 
-const GiftCard = ({ gift, onDelete}) => {
-    const { store } = useContext(Context);
+const GiftCard = ({gift, onDelete}) => {
+    const {store} = useContext(Context);
     const [visible, setVisible] = useState(false);
     const [editedGift, setEditedGift] = useState({
         title: gift.title,
@@ -35,7 +35,7 @@ const GiftCard = ({ gift, onDelete}) => {
     };
 
     const handleChange = (e, key) => {
-        setEditedGift({ ...editedGift, [key]: e.target.value });
+        setEditedGift({...editedGift, [key]: e.target.value});
     };
 
     const handleOpenLink = () => {
@@ -59,18 +59,18 @@ const GiftCard = ({ gift, onDelete}) => {
             margin: '0 auto'
         }}>
 
-            <div style={{ width: "20%" }}>
+            <div style={{width: "20%"}}>
                 <div className={'text-xl font-bold'}>{gift.title}</div>
             </div>
 
-            <div style={{ width: "67%" }}>
+            <div style={{width: "67%"}}>
                 {gift.details}
             </div>
 
-            <div style={{ width: "12%" }}>
-                <Button icon={<LinkOutlined />} onClick={handleOpenLink} style={{ marginRight: '10px' }} />
-                <Button icon={<EditOutlined />} onClick={handleEditClick} style={{ marginRight: '10px' }} />
-                <Button icon={<DeleteOutlined />} onClick={handleDeleteClick} />
+            <div style={{width: "12%"}}>
+                <Button icon={<LinkOutlined/>} onClick={handleOpenLink} style={{marginRight: '10px'}}/>
+                <Button icon={<EditOutlined/>} onClick={handleEditClick} style={{marginRight: '10px'}}/>
+                <Button icon={<DeleteOutlined/>} onClick={handleDeleteClick}/>
             </div>
 
             <Modal
@@ -98,13 +98,11 @@ const GiftCard = ({ gift, onDelete}) => {
                     onChange={(e) => handleChange(e, 'title')}
                     placeholder="Enter title"
                 />
-
                 <Input
                     value={editedGift.details}
                     onChange={(e) => handleChange(e, 'details')}
                     placeholder="Enter details"
                 />
-
                 <Input
                     value={editedGift.link}
                     onChange={(e) => handleChange(e, 'link')}

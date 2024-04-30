@@ -2,14 +2,12 @@ import {makeAutoObservable} from "mobx";
 import UserStore from "./modules/UserStore";
 import {message, notification} from "antd";
 import $api from "../http";
-import SystemStore from "./modules/SystemStore";
 import WishlistStore from "./modules/WishlistStore";
 import SharedStore from "./modules/SharedStore";
 
 export default class AppStore {
 
     users = new UserStore(this);
-    system = new SystemStore(this);
     wishlists = new WishlistStore(this)
     sharedStore = new SharedStore(this)
 
@@ -114,14 +112,8 @@ export default class AppStore {
                         }, 10);
                     }
 
-                    // notification.error({
-                    //     message: e.response.data?.title,
-                    //     description: e.response.data?.detail,
-                    // });
                     break;
-                // case 401:
-                //     message.error('Необходимо авторизоваться');
-                //     break;
+
                 case 403:
                     message.error('Недостаточно прав');
                     break;

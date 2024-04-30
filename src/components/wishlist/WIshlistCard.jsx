@@ -13,7 +13,7 @@ const WishlistCard = ({wishlist}) => {
         <div className="wishlist-card-container"
              style={{display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '20px 0'}}>
             <Link to={{
-                pathname: `/wish-list/${wishlist?.id}`,
+                pathname: `/wishlists/${wishlist?.id}`,
                 state: {title: "это я вставил в wislistCard"}
             }}>
                 <Card title={wishlist?.title} bordered={true}

@@ -65,11 +65,22 @@ const PageTemplate = ({children, title}) => {
 
                     </div>
                     <div className={st.goPosts}>
-                        <Link to={"/"}>
+                        <Link to={"/wishlists"}>
                             <Button type={"dashed"}>
-                                Подписки
+                                Wishlists
                             </Button>
                         </Link>
+                        <Link to={"/booking"}>
+                            <Button type={"dashed"}>
+                                Booking
+                            </Button>
+                        </Link>
+                        <Link to={"/subscriptions"}>
+                            <Button type={"dashed"}>
+                                Subscriptions
+                            </Button>
+                        </Link>
+
                         <Dropdown
                             placement={"bottomRight"}
                             // trigger={"click"}

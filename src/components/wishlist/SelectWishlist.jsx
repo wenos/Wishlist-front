@@ -72,7 +72,6 @@ const SelectWishlist = () => {
         setGiftLink('');
     };
     useEffect(() => {
-
         fetchGifts();
         fetchWishlist();
     }, [store.wishlists, wishlistId]);
@@ -144,10 +143,16 @@ const SelectWishlist = () => {
     };
 
     const handleSharedCreate = async () => {
-        // Здесь нужно добавить логику для создания ссылки и получения ее значения
-        const sharedLinkValue = await store.sharedStore.getLink({ mode: linkMode, id: wishlistId }); // Замените на значение созданной ссылки
-
-        setSharedLink(sharedLinkValue);
+        const linkEntity = await store.sharedStore.getLink({ mode: linkMode, id: wishlistId });
+        let link = ""
+        if (linkEntity.accessMode === "booking") {
+            link = `http://localhost:3000/shared/booking/${linkEntity.id}`;
+        } else if (linkEntity.accessMode === "edit") {
+            link = ""
+        } else if (linkEntity.accessMode === "subscribe") {
+            link = `http://localhost:3000/shared/subscribe/${linkEntity.id}`;
+        }
+        setSharedLink(link);
     };
 
     return (
@@ -232,6 +237,7 @@ const SelectWishlist = () => {
 
                 </div>
                 {gifts?.map((gift) => (<GiftCard onDelete={() => deleteGift(gift.id)} key={gift.id} gift={gift}/>))}
+
                 <Button style={{fontFamily: "anta", fontSize: 18, width: "50%", margin: "0 auto", lineHeight: "10px"}}
                         danger onClick={handleDeleteButtonClick}>Delete Wishlist</Button>
 
