@@ -148,7 +148,7 @@ const SelectWishlist = () => {
         if (linkEntity.accessMode === "booking") {
             link = `http://localhost:3000/shared/booking/${linkEntity.id}`;
         } else if (linkEntity.accessMode === "edit") {
-            link = ""
+            link = "Извините, данная функция пока в разработке"
         } else if (linkEntity.accessMode === "subscribe") {
             link = `http://localhost:3000/shared/subscribe/${linkEntity.id}`;
         }
@@ -214,12 +214,14 @@ const SelectWishlist = () => {
                             onChange={handleGiftNameChange}
                             placeholder="Название подарка"
                             style={{marginRight: '10px'}}
+                            required
                         />
                         <Input
                             value={giftDetails}
                             onChange={handleGiftDetailsChange}
                             placeholder="Детали подарка"
                             style={{marginRight: '10px'}}
+                            required
                         />
                         <Input
                             value={giftLink}
@@ -266,7 +268,7 @@ const SelectWishlist = () => {
                 >
                     <Option value="booking">Booking</Option>
                     <Option value="edit">Edit</Option>
-                    <Option value="subscribe">Subscribe</Option>
+                    <Option value="subscribe">Save</Option>
                 </Select>
                 <p>Here is your shared link:</p>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>

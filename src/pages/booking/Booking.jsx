@@ -1,10 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Context} from "../../index";
-import PageTemplate from "../template/PageTemplate/PageTemplate";
+import PageTemplate from "../../components/template/PageTemplate/PageTemplate";
 import Title from "antd/es/typography/Title";
 import {Select} from "antd";
-import BookingCard from "../../pages/booking/BookingCard";
+import BookingCard from "../../components/booking/BookingCard";
 
 const {Option} = Select;
 
@@ -38,14 +38,14 @@ const Booking = () => {
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                     <Title
                         level={2}
-                        style={{textAlign: 'center', fontSize: '24px', fontFamily: 'Anta', cursor: 'pointer'}}
+                        style={{textAlign: 'center', fontSize: '24px', fontFamily: 'Anta'}}
                     >
                         {wishlistWithGifts.title}
                     </Title>
                 </div>
                 <Title
                     level={2}
-                    style={{textAlign: 'center', fontSize: '24px', fontFamily: 'Anta', cursor: 'pointer'}}
+                    style={{textAlign: 'center', fontSize: '24px', fontFamily: 'Anta'}}
                 >
                     {wishlistWithGifts.description}
                 </Title>

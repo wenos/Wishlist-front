@@ -31,7 +31,21 @@ const GiftCard = ({gift, onDelete}) => {
     };
 
     const handleSave = async () => {
-        // Обработка сохранения
+        let res = store.wishlists.updateGift( {
+                title: editedGift.title,
+                details: editedGift.details,
+                link: editedGift.link,
+                id: gift.id
+            }
+        )
+        if (res) {
+            gift.details = editedGift.details
+            gift.title = editedGift.title
+            gift.link = editedGift.link
+        }
+        setVisible(false);
+        
+
     };
 
     const handleChange = (e, key) => {

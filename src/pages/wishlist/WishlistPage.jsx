@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../../index";
+import React, {useContext, useEffect, useState} from "react";
+import {Context} from "../../index";
 import WishlistCard from "../../components/wishlist/WIshlistCard";
 import PageTemplate from "../../components/template/PageTemplate/PageTemplate";
-import { Button, Modal, Form, Input } from "antd";
+import {Button, Form, Input, Modal} from "antd";
 
 const MainPage = () => {
     const { store } = useContext(Context);
@@ -43,7 +43,10 @@ const MainPage = () => {
     return (
         <PageTemplate title={"Wishlists"}>
             <div className={'scroll-auto'} style={{textAlign: "center"}}>
-                <Button style={{fontFamily: "anta", fontSize: 18, width: "50%", margin: "0 auto", lineHeight: "10px"}} onClick={handleCreateButtonClick}>Create wishlist</Button>
+                <div style={{paddingBottom:"20px"}}>
+                <Button style={{fontFamily: "anta", fontSize: 18, width: "50%", margin: "0 auto", lineHeight: "10px"}}
+                        onClick={handleCreateButtonClick}>Create wishlist</Button>
+                </div>
                 <div className={'flex flex-col gap-2'}>
                     {wishlists?.map((wishlist) => (
                         <div key={wishlist.id}>
@@ -51,6 +54,8 @@ const MainPage = () => {
                         </div>
                     ))}
                 </div>
+
+
             </div>
 
             <Modal

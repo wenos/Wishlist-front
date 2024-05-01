@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Context} from "../../index";
-import PageTemplate from "../template/PageTemplate/PageTemplate";
+import PageTemplate from "../../components/template/PageTemplate/PageTemplate";
 import {Button, Select} from "antd";
 import {CloseOutlined, LinkOutlined} from "@ant-design/icons";
 
@@ -46,6 +46,7 @@ const UserBooking = () => {
                         border: '1px solid #ccc',
                         borderRadius: '10px',
                         padding: '10px',
+                        marginTop: '20px',
                         borderColor: '#5087E1',
                         width: '80%',
                         wordWrap: 'break-word',

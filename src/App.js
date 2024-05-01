@@ -11,10 +11,11 @@ import Page404 from "./pages/Page404";
 import UserDeleted from "./pages/UserDeleted";
 import WishlistPage from "./pages/wishlist/WishlistPage";
 import SelectWishlist from "./components/wishlist/SelectWishlist";
-import Booking from "./components/wishlist/Booking";
-import TmpSubscribe from "./components/wishlist/TmpSubscribe";
-import UserBooking from "./components/wishlist/UserBooking";
-import SubscriptionsWishlists from "./components/wishlist/SubscriptionsWishlists";
+import Booking from "./pages/booking/Booking";
+import TmpSubscribe from "./pages/saved/TmpSubscribe";
+import UserBooking from "./pages/booking/UserBooking";
+import SubscriptionsWishlists from "./pages/saved/SubscriptionsWishlists";
+import SelectSubscriptionWishlist from "./components/wishlist/SelectSubscriptionWishlist";
 
 function App() {
     return (
@@ -29,7 +30,7 @@ function App() {
                 <Route path={'/booking'} element={<UserBooking/>}/>
                 <Route path={'/'} element={<WishlistPage/>}/>
                 <Route path={'/subscriptions'} element={<SubscriptionsWishlists/>}/>
-
+                <Route path={'/subscriptions/:wishlistId'} element={<SelectSubscriptionWishlist/>}/>
 
                 <Route path={'/users/settings'} element={<Settings/>}/>
                 <Route path={'/users/null'} element={<UserDeleted/>}/>

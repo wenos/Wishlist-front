@@ -77,7 +77,7 @@ const PageTemplate = ({children, title}) => {
                         </Link>
                         <Link to={"/subscriptions"}>
                             <Button type={"dashed"}>
-                                Subscriptions
+                                Saves
                             </Button>
                         </Link>
 
