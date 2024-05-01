@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../index";
-import PageTemplate from "../template/PageTemplate/PageTemplate";
+import PageTemplate from "../../components/template/PageTemplate/PageTemplate";
 import { Modal, Button } from "antd";
 
 const TmpSubscribe = () => {
@@ -36,11 +36,11 @@ const TmpSubscribe = () => {
                         Cancel
                     </Button>,
                     <Button key="subscribe" type="primary" onClick={handleSubscribe}>
-                        Subscribe
+                        Save
                     </Button>,
                 ]}
             >
-                Are you sure you want to subscribe to this wishlist?
+                Are you sure you want to save to this wishlist?
             </Modal>
         </PageTemplate>
     );
