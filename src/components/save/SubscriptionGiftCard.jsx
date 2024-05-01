@@ -1,9 +1,7 @@
-import {Card, Button, Modal, Input} from "antd";
-import {EditOutlined, DeleteOutlined, LinkOutlined} from '@ant-design/icons';
-import {useContext, useState} from "react";
-import {Context} from "../../index";
+import {Button} from "antd";
+import {LinkOutlined} from '@ant-design/icons';
 
-const SubscriptionGiftCard = ({gift, onDelete}) => {
+const SubscriptionGiftCard = ({gift}) => {
 
     const handleOpenLink = () => {
         if (gift.link) {

@@ -246,7 +246,7 @@ const SelectWishlist = () => {
             </div>
             <Modal
                 title="Delete Wishlist"
-                visible={deleteModalVisible}
+                open={deleteModalVisible}
                 onOk={handleDeleteConfirm}
                 onCancel={handleDeleteCancel}
             >
@@ -254,7 +254,7 @@ const SelectWishlist = () => {
             </Modal>
             <Modal
                 title="Create Shared Link"
-                visible={sharedModalVisible}
+                open={sharedModalVisible}
                 onOk={handleSharedCreate}
                 onCancel={() => setSharedModalVisible(false)}
                 okText="Create"
@@ -268,7 +268,7 @@ const SelectWishlist = () => {
                 >
                     <Option value="booking">Booking</Option>
                     <Option value="edit">Edit</Option>
-                    <Option value="subscribe">Save</Option>
+                    <Option value="subscribe">Save </Option>
                 </Select>
                 <p>Here is your shared link:</p>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>

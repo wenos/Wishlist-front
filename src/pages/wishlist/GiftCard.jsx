@@ -1,5 +1,5 @@
-import {Card, Button, Modal, Input} from "antd";
-import {EditOutlined, DeleteOutlined, LinkOutlined} from '@ant-design/icons';
+import {Button, Input, Modal} from "antd";
+import {DeleteOutlined, EditOutlined, LinkOutlined} from '@ant-design/icons';
 import {useContext, useState} from "react";
 import {Context} from "../../index";
 
@@ -89,7 +89,7 @@ const GiftCard = ({gift, onDelete}) => {
 
             <Modal
                 title="Confirm Delete"
-                visible={deleteModalVisible}
+                open={deleteModalVisible}
                 onOk={handleDeleteConfirm}
                 onCancel={() => setDeleteModalVisible(false)}
                 okText="Delete"
@@ -100,7 +100,7 @@ const GiftCard = ({gift, onDelete}) => {
 
             <Modal
                 title="Edit Gift"
-                visible={visible}
+                open={visible}
                 onCancel={handleCancel}
                 footer={[
                     <Button key="cancel" onClick={handleCancel}>Cancel</Button>,

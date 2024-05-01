@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Context } from "../../index";
+import React, {useContext, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {Context} from "../../index";
 import PageTemplate from "../../components/template/PageTemplate/PageTemplate";
-import { Modal, Button } from "antd";
+import {Button, Modal} from "antd";
 
 const TmpSubscribe = () => {
     const { sharedId } = useParams();
@@ -29,7 +29,7 @@ const TmpSubscribe = () => {
         <PageTemplate title=" ">
             <Modal
                 title="Subscribe Confirmation"
-                visible={modalVisible}
+                open={modalVisible}
                 onCancel={handleCloseModal}
                 footer={[
                     <Button key="cancel" onClick={handleCloseModal}>
