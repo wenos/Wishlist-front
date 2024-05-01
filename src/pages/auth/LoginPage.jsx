@@ -41,7 +41,7 @@ const LoginPage = () => {
                                 whitespace: true,
                             },
                             {
-                                min: 5,
+                                min: 4,
                                 message: 'Минимальная длина 4 символа'
                             },
                             {
