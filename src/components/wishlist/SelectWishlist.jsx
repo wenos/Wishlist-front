@@ -146,11 +146,11 @@ const SelectWishlist = () => {
         const linkEntity = await store.sharedStore.getLink({ mode: linkMode, id: wishlistId });
         let link = ""
         if (linkEntity.accessMode === "booking") {
-            link = `http://localhost:3000/shared/booking/${linkEntity.id}`;
+            link = `http://85.193.86.209:3000/shared/booking/${linkEntity.id}`;
         } else if (linkEntity.accessMode === "edit") {
             link = "Извините, данная функция пока в разработке"
         } else if (linkEntity.accessMode === "subscribe") {
-            link = `http://localhost:3000/shared/subscribe/${linkEntity.id}`;
+            link = `http://85.193.86.209:3000/shared/subscribe/${linkEntity.id}`;
         }
         setSharedLink(link);
     };
@@ -211,12 +211,24 @@ const SelectWishlist = () => {
                     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <Input
                             value={giftName}
+                            rules={[
+                                {
+                                    max: 255,
+                                    message: 'Максимальная длина 255 символов'
+                                }
+                            ]}
                             onChange={handleGiftNameChange}
                             placeholder="Название подарка"
                             style={{marginRight: '10px'}}
                             required
                         />
                         <Input
+                            rules={[
+                                {
+                                    max: 1000,
+                                    message: 'Максимальная длина 1000 символов'
+                                }
+                            ]}
                             value={giftDetails}
                             onChange={handleGiftDetailsChange}
                             placeholder="Детали подарка"
@@ -227,7 +239,7 @@ const SelectWishlist = () => {
                             rules={[
                                 {
                                     max: 1000,
-                                    message: 'Максимальная длина 100 символов'
+                                    message: 'Максимальная длина 1000 символов'
                                 }
                             ]}
                             value={giftLink}
