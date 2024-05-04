@@ -224,6 +224,12 @@ const SelectWishlist = () => {
                             required
                         />
                         <Input
+                            rules={[
+                                {
+                                    max: 1000,
+                                    message: 'Максимальная длина 100 символов'
+                                }
+                            ]}
                             value={giftLink}
                             onChange={handleGiftLinkChange}
                             placeholder="Ссылка на подарок"
