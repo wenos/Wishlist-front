@@ -218,44 +218,6 @@ const UsersTablePage = () => {
             },
         });
     };
-    // const [selectedModalRole, setSelectedModalRole] = useState(null);
-
-    // const changeUserRole = (userId, username) => {
-    //
-    //     Modal.confirm({
-    //         title: 'Какую роль Вы желаете выдать пользователю "' + username + '"?',
-    //         icon: <ExclamationCircleOutlined />,
-    //         content: (
-    //             <Form layout="vertical" style={{ width: 350 }}>
-    //                 <Card style={{ border: 'none' }}>
-    //                     <Space wrap>
-    //                         <Form.Item label={"Роль"} required={true}>
-    //                             <Select
-    //                                 style={{ width: 180 }}
-    //                                 onChange={value => setSelectedModalRole(value)}
-    //                                 value={selectedModalRole}
-    //                             >
-    //                                 {roles?.map((role, index) => (
-    //                                     <Select.Option key={index} value={role}>
-    //                                         {role}
-    //                                     </Select.Option>
-    //                                 ))}
-    //                             </Select>
-    //                         </Form.Item>
-    //                     </Space>
-    //                 </Card>
-    //             </Form>
-    //         ),
-    //         okText: 'Выдать роль',
-    //         okType: 'danger',
-    //         cancelText: 'Отмена',
-    //         onOk() {
-    //             store.users.changeRole(userId, selectedModalRole).then(async () => {
-    //                 await updateData();
-    //             });
-    //         },
-    //     });
-    // };
 
     useEffect(() => {
         if (!store.isModerator()) {
@@ -485,25 +447,20 @@ const UsersTablePage = () => {
                         }, {
                             title: "Почта", dataIndex: "email", key: "email"
                         },
-                            //     {
-                            //     title: "Дата окончания бана",
-                            //     dataIndex: "bannedAt",
-                            //     key: "bannedAt",
-                            //     render: (bannedAt) => (DateTimeService.convertBackDateToString(bannedAt))
-                            // }
+
                             {
                                 title: "Забанен",
-                                dataIndex: "bannedAt",
+                                dataIndex: "banned",
                                 key: "banned",
                                 // Если дата не установлена либо она меньше текущей, то пользователь не забанен
                                 // Data хранится в unix timestamp
-                                render: (bannedAt) => {
+                                render: (banned) => {
                                     // Ко
-                                    if (bannedAt === null || DateTimeService.convertBackDateToDate(bannedAt) < new Date()) {
+                                    if (banned === null || DateTimeService.convertBackDateToDate(banned) < new Date()) {
                                         return <Tag color="green">Нет</Tag>
                                     } else {
                                         return <Tooltip
-                                            title={'до: ' + DateTimeService.convertBackDateToString(bannedAt)}>
+                                            title={'до: ' + DateTimeService.convertBackDateToString(banned)}>
                                             <Tag
                                                 className={'cursor-pointer'}
                                                 color="red">Да</Tag>
@@ -513,19 +470,16 @@ const UsersTablePage = () => {
                             }, {
                                 // До конца бана
                                 title: "До конца бана",
-                                dataIndex: "bannedAt",
+                                dataIndex: "banned",
                                 key: "banEnd",
-                                render: (bannedAt) => {
+                                render: (banned) => {
                                     // Провреяем забанен ли, если да, то вычисляем сколько осталось до конца бана
-                                    if (bannedAt !== null && DateTimeService.convertBackDateToDate(bannedAt) > new Date()) {
-                                        const diff = DateTimeService.convertBackDateToDate(bannedAt) - new Date();
-                                        // const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                                        // const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                                        // const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                                    if (banned !== null && DateTimeService.convertBackDateToDate(banned) > new Date()) {
+                                        const diff = DateTimeService.convertBackDateToDate(banned) - new Date();
                                         return <Countdown
                                             valueStyle={{fontSize: 14}}
-                                            value={(DateTimeService.convertBackDateToDate(bannedAt)) + 10 * 1000}
-                                            // value={DateTimeService.convertBackDateToDate(DateTimeService.convertBackDateToDate(bannedAt) - new Date()) + 10 * 1000}
+                                            value={(DateTimeService.convertBackDateToDate(banned)) + 10 * 1000}
+                                            // value={DateTimeService.convertBackDateToDate(DateTimeService.convertBackDateToDate(banned) - new Date()) + 10 * 1000}
                                         />
 
                                     } else {
@@ -548,14 +502,14 @@ const UsersTablePage = () => {
                             },
                             {
                                 title: "Удалён",
-                                dataIndex: "deletedAt",
-                                key: "deletedAt",
-                                render: (deletedAt) => {
-                                    if (deletedAt === null) {
+                                dataIndex: "deleted",
+                                key: "deleted",
+                                render: (deleted) => {
+                                    if (deleted === null) {
                                         return <Tag color="green">Нет</Tag>
                                     } else {
                                         return <Tooltip
-                                            title={'Удалён: ' + DateTimeService.convertBackDateToString(deletedAt)}>
+                                            title={'Удалён: ' + DateTimeService.convertBackDateToString(deleted)}>
                                             <Tag
                                                 className={'cursor-pointer'}
                                                 color="red">Да</Tag>
@@ -568,13 +522,13 @@ const UsersTablePage = () => {
                                 title: "Действия", key: "actions", render: (text, record) => (
                                     <>
                                         {
-                                            record?.deletedAt === null ?
+                                            record?.deleted === null ?
                                                 <span>
                                                 <LockOutlined key="ellipsis"
                                                               onClick={() => banUser(record.id, record.username)}
                                                               style={{marginRight: 8}}/>
                                                     {
-                                                        record.bannedAt !== null && DateTimeService.convertBackDateToDate(record.bannedAt) > new Date()
+                                                        record.banned !== null && DateTimeService.convertBackDateToDate(record.banned) > new Date()
                                                         && (
                                                             <UnlockOutlined
                                                                 key="lock"
